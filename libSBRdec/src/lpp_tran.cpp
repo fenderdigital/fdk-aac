@@ -118,10 +118,6 @@ amm-info@iis.fraunhofer.de
   \sa lppTransposer(), main_audio.cpp, sbr_scale.h, \ref documentationOverview
 */
 
-#ifdef __ANDROID__
-#include "log/log.h"
-#endif
-
 #include "lpp_tran.h"
 
 #include "sbr_ram.h"
@@ -334,12 +330,6 @@ void lppTransposer(
       }
     }
   }
-#ifdef __ANDROID__
-  else {
-    // Safetynet logging
-    android_errorWriteLog(0x534e4554, "112160868");
-  }
-#endif
 
   /* init bwIndex for each patch */
   FDKmemclear(bwIndex, sizeof(bwIndex));
@@ -930,12 +920,6 @@ void lppTransposerHBE(
       FDKmemclear(&qmfBufferImag[i][targetStopBand], memSize);
     }
   }
-#ifdef __ANDROID__
-  else {
-    // Safetynet logging
-    android_errorWriteLog(0x534e4554, "112160868");
-  }
-#endif
 
   /*
   Calc common low band scale factor
